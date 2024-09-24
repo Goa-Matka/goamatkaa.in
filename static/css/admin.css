@@ -1,0 +1,311 @@
+
+.admin-tdd{
+
+    text-align: center;
+    padding: 8px;
+    font-weight: 550;
+  }
+
+  
+  .admin-mask{
+    background-color: rgba(0, 0, 0, 0.715);
+    padding-top: 25vh;
+  }
+
+
+  .admin-button-row{
+    display: flex;
+  justify-content: center;
+    gap: 20px;
+  }
+
+
+  .admin-body{
+
+background: url('/static/ram.jpg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+
+background-attachment: fixed;
+color: black;
+
+  }
+
+
+.admin-th{
+background-color: rgb(237, 172, 85);
+border: 1.4px solid rgb(8, 79, 79);
+    text-align: center;
+    padding: 8px;
+    font-weight: 600;
+    width:fit-content;
+
+    
+ 
+
+}
+
+.table-container{
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+.admin-input{
+
+  width: 150px;
+  height: 30px;
+}
+.input-table,.numerinput{
+width:80%;
+max-width: 100%;
+}
+
+.admin-h3{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 4px 6px rgb(0, 0, 0);
+    margin-bottom: 25px;
+
+}
+.admin-h3:hover{
+opacity: 0;
+transition: 0.6s ease;
+}
+
+:root {
+    --bg-offset-x: 0px; /* Adjust horizontal offset */
+    --bg-offset-y: 15%; /* Adjust vertical offset */
+
+  }
+  
+
+.ad-form{
+
+background-color: rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 10px; /* Adjust as needed */
+
+  /* margin-top: 60px; */
+  background-image: url('/static/bg.jfif');
+  background-position: calc(40% + var(--bg-offset-x)) calc(47% + var(--bg-offset-y));
+  background-repeat: no-repeat;
+  background-size: cover;  
+  
+
+  box-shadow: 0 5px 8px rgba(128, 3, 3, 0.5); /* Optional: add shadow for better visibility */
+ width:90%;
+
+padding-bottom: 30px;
+border-radius: 10px;
+width:max-content ;
+
+
+
+}
+
+
+
+
+.Logout{
+    transition: transform  0.5s ease;
+}
+
+.Logout:hover{
+   transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.btn-lg{
+  transition: transform  0.5s ease;
+}
+
+
+
+.btn-lg:hover{
+  transform: scale(1.1);
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tableinput-ad{
+  /* display:flex; */
+  flex-direction: row;
+  width: 500px;
+  margin: auto;
+  transition: transform  0.5s ease;
+}
+
+
+
+
+.admin-input{
+text-align: center;
+font-weight: 700;
+color:rgb(155, 10, 10);
+}
+
+@media(max-width:768px){
+
+  .tableinput-ad{
+    width: auto;
+  }
+
+
+  .ad-form{
+
+    background-color: rgba(255, 255, 255, 0.3); /* Adjust alpha (4th value) for transparency */
+      backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+      -webkit-backdrop-filter: blur(10px); /* For Safari */
+      border-radius: 10px; /* Adjust as needed */
+    
+      /* margin-top: 60px; */
+      background-image: url('/static/bg.jfif');
+      background-position: calc(25% + var(--bg-offset-x)) calc(45% + var(--bg-offset-y));
+      background-repeat: no-repeat;
+      background-size: cover;   
+    
+      box-shadow: 0 5px 8px rgba(128, 3, 3, 0.5); /* Optional: add shadow for better visibility */
+     width:90%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    /* width:600px ; */
+    /* transition: transform  0.5s ease; */
+    }
+    
+}
+
+
+@media(max-width:710px){
+.ad-form{
+
+  width: 400px;
+}
+.admin-input{
+
+  width: 90px;
+  height: 35px;
+}
+
+#slots{
+  width: 90px;
+  height: 35px;
+}
+
+.ad-form{
+
+    background-color: rgba(255, 255, 255, 0.3); /* Adjust alpha (4th value) for transparency */
+      backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+      -webkit-backdrop-filter: blur(10px); /* For Safari */
+      border-radius: 10px; /* Adjust as needed */
+    
+      /* margin-top: 60px; */
+      background-image: url('/static/bg.jfif');
+      background-position: calc(25% + var(--bg-offset-x)) calc(60% + var(--bg-offset-y));
+      background-repeat: no-repeat;
+      background-size: cover;   
+    
+      box-shadow: 0 5px 8px rgba(128, 3, 3, 0.5); /* Optional: add shadow for better visibility */
+     width:90%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    /* width:600px ; */
+    /* transition: transform  0.5s ease; */
+    }
+.btn-lg{
+zoom:75%;
+
+}
+
+    }
+    
+
+
+
+    .admin-log{
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      
+    }
+  
+  
+    .admin-log:hover{
+      text-decoration: none;
+   color: rgb(255, 255, 255);
+    }
+  
+  
+    @media(max-width:570px){
+      .numerinput-ad{
+        zoom: 80%;
+      }
+  .table-container{
+  
+  zoom: 100%;
+  width: min-content;
+  }
+  
+    }
+  
+ 
+
+    @media(max-width:497px){
+      .numerinput-ad{
+        zoom: 80%;
+      }
+  .table-container{
+  
+  zoom: 80%;
+  width: min-content;
+
+  }
+
+
+
+    }
+
+
+    @media(max-width:440px){
+      .numerinput-ad{
+        zoom: 80%;
+      }
+  .table-container{
+  
+  zoom: 80%;
+ 
+  
+  }
+
+ .ad-form{
+  width:95%;
+ }
+
+ /* .table-container{
+
+
+} */
+
+.admin-th{
+  zoom:90%;
+}
+
+      }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+/* </style> */

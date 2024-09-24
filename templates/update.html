@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block title %} {{title}} {% endblock title %}
+{% block body %}
+
+<div class="container my-5" style="height: 60vh;">
+    <h2>You Are Editing Slot - {{slot}}</h2>
+    <form action="/update/{{slot}}" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">One Digit Result</label>
+        <input type="text" class="form-control" name="oneDigi" id="oneDigi" value="{{one}}"
+          aria-describedby="emailHelp" min="0" max="9" required>
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Three Digit Result</label>
+        <input type="text" class="form-control" name="threeDigi" id="threeDigi" value="{{three}}" min="100" max="999" required>
+      </div>
+      <button type="submit" class="btn btn-success">Update</button>
+    </form>
+  </div>
+
+{% endblock body %}

@@ -1,0 +1,141 @@
+/* <style> */
+/* Styles for the burger menu */
+
+
+
+
+
+ 
+@media(max-width:991px){
+
+
+.navbar-nav{
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+}
+
+/* 
+@media(max-width:780px){
+  .mob-pad{
+    margin-left:40px;
+  }
+
+
+  } */
+  
+
+
+
+
+
+.navbar-nav{
+  /* width: 50; */
+  margin: 0;
+  list-style-type: none; /* Optional: Remove default list styles */
+
+  font-size: 17px;
+margin-left:22px;
+
+}
+
+.nav-link:hover{
+  color: white;
+
+}
+
+.nav-link{
+  color: rgb(255, 234, 5); font-weight: 600;
+ 
+}
+
+
+
+/* //////////////////////////footer////////////////////////////////////// */
+
+
+
+/* <style> */
+  .footer {
+  position: relative;
+  background: #015871;
+  min-height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top:5%;
+  bottom: 0;
+  /* margin-bottom: 0; */
+  
+
+}
+
+
+
+.footer p {
+  color: #ffffff;
+  margin: 15px 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 1px 0px 0px rgb(197, 2, 2);
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;  
+  height: 100px;
+  background: url("https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+/* </style> */

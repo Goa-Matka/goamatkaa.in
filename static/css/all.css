@@ -1,0 +1,18 @@
+
+html::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  
+  html::-webkit-scrollbar-track {
+    background: #000;
+  }
+  
+  html::-webkit-scrollbar-thumb {
+    background: #fff53c;
+  }
+  
+/* Apply smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+}
+

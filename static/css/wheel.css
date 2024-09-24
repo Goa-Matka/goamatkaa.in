@@ -1,0 +1,369 @@
+/* <style> */
+
+.lap{
+    position: absolute;
+
+
+    color:yellow;
+    font-weight:700;
+    text-shadow: 2px 2px #ff0000;
+    /* background-color: rgb(0, 27, 230); */
+width: fit-content;
+
+margin-top: -300px;
+margin-left: 133px;
+
+
+}
+
+
+.w-mob
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+.lapp{
+    position:absolute;
+
+    color:yellow;
+	text-shadow: 2px 2px #ff0000;
+    font-weight:700;
+    /* background-color: none; */
+  
+    font-size:48px;
+    text-transform:uppercase;
+    animation-name: example;
+    animation-duration:3s;
+    animation-iteration-count:200;
+    transition:color 5s;
+    transition:color 5s;
+    cursor:pointer;
+    -webkit-animation: chak 3s infinite; 
+    animation: chak 3s infinite;
+    margin-top: -230px;
+    margin-left: 170px;
+
+}
+
+.lapp {
+  font-size: 2em;
+  animation: rotateMirror 6s ease-in-out infinite;
+  -webkit-animation: rotateMirror 6s ease-in-out infinite; 
+}
+
+
+@media(max-width:900px){
+  .w-mob{
+    zoom: 85%;
+  }
+}
+
+
+@media(max-width:605px){
+  .w-mob{
+  zoom:80%;
+  }
+
+}
+
+
+    
+@media(max-width:530px){
+    
+
+
+
+  .rotate{
+    zoom: 80%;
+  }
+  
+
+
+
+  .lapp{
+zoom: 80%;
+  
+
+}
+
+.lap{
+  zoom: 80%;
+        
+   
+      }
+    }
+
+
+@media(max-width:425px){
+  .w-mob{
+  zoom:75%;
+  }
+}
+
+
+@media(max-width:370px){
+
+.rotate{
+
+  zoom:70%;
+}
+.lapp{
+  zoom: 70%;
+    
+  
+  }
+  
+  .lap{
+    zoom: 70%;
+          
+     
+        }
+      }
+  
+	
+
+
+
+/* 
+@media(max-width:980px){
+	.lap{
+    position:absolute;
+    top:109%;
+    left:43%;
+ 
+}
+
+.lapp{
+    position:absolute!important;
+
+    top: 116%!important;
+    left:47%!important;
+    
+}
+
+}
+
+@media(max-width:760px){
+	.lap{
+    position:sticky;
+ zoom: 90%;
+ 
+}
+
+.lapp{
+    position:absolute;
+
+ bottom:-80%;
+   
+    left:45%!important;
+	zoom: 90%;
+    
+}
+
+}
+
+
+
+@media(max-width:605px){
+.w-mob{
+zoom:80%;
+}
+.lap{
+position:sticky;
+ zoom: 83%;
+
+margin-left: 10px;
+margin-top: -60px;
+ 
+}
+.lapp{
+  position:sticky;
+   zoom: 83%;
+  margin-left: 10px;
+  margin-top: -60px;
+   
+  }
+}
+
+@media(max-width:515px){
+  .w-mob{
+  zoom:80%;
+  }
+  .lap{
+  position:sticky;
+   zoom: 83%;
+  margin-left: -5px;
+  margin-top:-80px;
+   
+  }
+
+.lapp{
+    position:absolute!important;
+
+    top: 43%!important;
+    left:45%!important;
+	zoom: 86%;
+	margin-left: -10px;
+  margin-top: -60px;
+
+    
+}
+}
+
+
+
+
+
+@media(max-width:490px){
+  .w-mob{
+  zoom:80%;
+  }
+  .lap{
+
+   zoom: 83%;
+
+  margin-left: 5px;
+margin-top: -190px;
+   
+  }
+
+.lapp{
+    position:sticky!important;
+
+   
+	zoom: 86%;
+	margin-left: -5px;
+  margin-top: -190px;
+
+    
+}
+}
+@media(max-width:420px){
+  .w-mob{
+  zoom:80%;
+  }
+  .lap{
+
+   zoom: 83%;
+
+  margin-left: -10px;
+margin-top: -190px;
+   
+  }
+
+.lapp{
+    position:sticky!important;
+
+   
+	zoom: 86%;
+	margin-left: -10px;
+  margin-top: -190px;
+
+    
+} 
+}
+  */
+
+
+
+
+
+
+
+
+
+@keyframes rotateMirror {
+  0% {
+    transform: rotateY(0deg);
+    animation-timing-function: ease-in;
+  }
+  40% {
+    transform: rotateY(180deg);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes rotateMirror {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    -webkit-animation-timing-function: ease-in;
+  }
+  40% {
+    -webkit-transform: rotateY(180deg);
+    -webkit-animation-timing-function: ease-out;
+  }
+  60% {
+    -webkit-transform: rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+  }
+}
+
+
+
+/* 
+@media(max-width:828px){
+
+	.rotate {
+ zoom: 90%;
+  animation: spin 6s ease-in-out infinite;
+  margin-bottom: 45px;
+}
+.lap{
+    position:absolute;
+    top:109%;
+    left:41.5%;
+ 
+}
+
+.lapp{
+    position:absolute!important;
+
+    top: 116%!important;
+    left:47%!important;
+    
+}
+
+} */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  width: 400px; /* Adjust the size of the image */
+  height: 400px; /* Adjust the size of the image */
+  animation: spin 6s ease-in-out infinite;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 45px;
+
+}
+
+
+
+
+	/* </style> */

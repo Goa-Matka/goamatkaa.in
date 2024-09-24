@@ -1,0 +1,272 @@
+
+
+{% extends 'layout.html' %}
+{% block title %} {{title}} {% endblock title %}
+{% block body %}
+
+<body class="admin-body">
+    <div class="admin-mask">
+<center>
+
+  
+  
+  <div class="table-container ad-form">
+    <br>
+    <table id="inputTable container">
+      <thead>
+        <tr class="admin-tr">
+          <br><br><br>
+          <h3 class="admin-h3">Add New Result</h3>
+        </tr>
+        <tr class="admin-tr">
+          <!-- <h3 class="admin-h3">Add New Result</h3> -->
+          <th class="admin-th"><b>Type</b></th>
+          <th class="admin-th"><b>Slot</b></th>
+          <th class="admin-th"><b>One Digit</b></th>
+          <th class="admin-th"><b>Three Digits</b></th>
+          <th class="admin-th"><b>Action</b></th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        
+        <!-- Add more rows as needed -->
+        <form action="/add" method="post" >
+          
+          <tr id="row456">
+            <td class="admin-th"><i>Daily</i></td>
+            <td class="admin-th">
+              <select name="slots" id="slots" required>
+                <option disabled selected>Select a Slot</option>
+                {% if not daily_data.slot_1_1%}
+                <option value="1">Slot - 1</option>
+                {% endif %}
+                {% if not daily_data.slot_2_1%}
+                <option value="2">Slot - 2</option>
+                {% endif %}
+                {% if not daily_data.slot_3_1%}
+                <option value="3">Slot - 3</option>
+                {% endif %}
+                {% if not daily_data.slot_4_1%}
+                <option value="4">Slot - 4</option>
+                {% endif %}
+                {% if not daily_data.slot_5_1%}
+                <option value="5">Slot - 5</option>
+                {% endif %}
+                {% if not daily_data.slot_6_1%}
+                <option value="6">Slot - 6</option>
+                {% endif %}
+                {% if not daily_data.slot_7_1%}
+                <option value="7">Slot - 7</option>
+                {% endif %}
+                {% if not daily_data.slot_8_1%}
+                <option value="8">Slot - 8</option>
+                {% endif %}
+                {% if not daily_data.slot_9_1%}
+                <option value="9">Slot - 9</option>
+                {% endif %}
+                {% if not daily_data.slot_10_1%}
+                <option value="10">Slot - 10</option>
+                {% endif %}
+              </select>
+         <style>
+          option{
+background-color: #FFD700;
+
+          }
+         </style>
+            </td>
+            <td class="admin-th"><input type="number" name="one_digit" id=""  class="admin-input" min="0" max="9" required></td>
+            <td class="admin-th"><input type="number" name="three_digit" id="" class="admin-input" min="0" max="999" required></td>
+        <td class="admin-th"><button type="submit"  class="btn btn-success">Submit</button></td>
+      </tr>
+    </form>
+    
+    <form action="/add_extra" method="post" >
+    <tr id="row456">
+      <td class="admin-th"><i>Extra</i></td>
+      <td class="admin-th">
+          <select name="slots" id="slots" required>
+                <option disabled selected>Select a Slot</option>
+                {% if not daily_extra.open_1 %}
+                    <option value="1">Slot - Open</option>
+                {% endif %}
+                {% if not daily_extra.close_3 %}
+                    <option value="2">Slot - Close</option>
+                {% endif %}
+            </select>
+        </td>
+        <td class="admin-th"><input type="number" name="one_digit" id=""  class="admin-input" min="0" max="9" required></td>
+        <td class="admin-th"><input type="number" name="three_digit" id="" class="admin-input" min="0" max="999" required></td>
+        <td class="admin-th"><button type="submit"  class="btn btn-success">Submit</button></td>
+      </tr>
+    </form>
+    </tbody>
+  </table>
+</div>
+</center>
+<br><br><br>
+
+<center>
+  <div class="tableinput-ad">
+    <br><br>
+    <table class="numerinput" align="center">
+      <thead>
+        <tr class="admin-tr"> 
+          <th class="admin-th" style="background-color: darkorange;">Slotes</th>
+          <th class="admin-th" style="background-color: white;">One Digit</th>
+          <th class="admin-th" style="background-color: green;">Three Digits</th>
+          <th class="admin-th" style="background-color: rgb(255, 255, 255);">Edit</th>
+          <th class="admin-th" style="background-color: darkorange;">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% if daily_extra.open_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:darksalmon;">Open</td>
+            <td class="admin-th">{{daily_extra.open_1}}</td>
+            <td class="admin-th">{{daily_extra.open_3}}</td>
+            <td class="admin-th"><a href="/update_extra/1" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete_extra/1" type="submit" class="btn btn-danger">Delete</button></td>     
+          </tr>
+          {% endif %}
+          {% if daily_extra.close_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:darksalmon;">Close</td>
+            <td class="admin-th">{{daily_extra.close_1}}</td>
+            <td class="admin-th">{{daily_extra.close_3}}</td>
+            <td class="admin-th"><a href="/update_extra/0" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete_extra/0" type="submit" class="btn btn-danger">Delete</button></td>     
+          </tr>
+          {% endif %}
+
+          {% if daily_data.slot_10_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 10</td>
+            <td class="admin-th">{{daily_data.slot_10_1}}</td>
+            <td class="admin-th">{{daily_data.slot_10_3}}</td>
+            <td class="admin-th"><a href="/update/10" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/10" type="submit" class="btn btn-danger">Delete</button></td>     
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_9_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 9</td>
+            <td class="admin-th">{{daily_data.slot_9_1}}</td>
+            <td class="admin-th">{{daily_data.slot_9_3}}</td>
+            <td class="admin-th"><a href="/update/9" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/9" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_8_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 8</td>
+            <td class="admin-th">{{daily_data.slot_8_1}}</td>
+            <td class="admin-th">{{daily_data.slot_8_3}}</td>
+            <td class="admin-th"><a href="/update/8" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/8" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_7_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 7</td>
+            <td class="admin-th">{{daily_data.slot_7_1}}</td>
+            <td class="admin-th">{{daily_data.slot_7_3}}</td>
+            <td class="admin-th"><a href="/update/7" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/7" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_6_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 6</td>
+            <td class="admin-th">{{daily_data.slot_6_1}}</td>
+            <td class="admin-th">{{daily_data.slot_6_3}}</td>
+            <td class="admin-th"><a href="/update/6" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/6" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_5_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 5</td>
+            <td class="admin-th">{{daily_data.slot_5_1}}</td>
+            <td class="admin-th">{{daily_data.slot_5_3}}</td>
+            <td class="admin-th"><a href="/update/5" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/5" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_4_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 4</td>
+            <td class="admin-th">{{daily_data.slot_4_1}}</td>
+            <td class="admin-th">{{daily_data.slot_4_3}}</td>
+            <td class="admin-th"><a href="/update/4" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/4" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_3_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 3</td>
+            <td class="admin-th">{{daily_data.slot_3_1}}</td>
+            <td class="admin-th">{{daily_data.slot_3_3}}</td>
+            <td class="admin-th"><a href="/update/3" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/3" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_2_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 2</td>
+            <td class="admin-th">{{daily_data.slot_2_1}}</td>
+            <td class="admin-th">{{daily_data.slot_2_3}}</td>
+            <td class="admin-th"><a href="/update/2" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/2" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+          {% if daily_data.slot_1_1 %}
+          <tr class="admin-tr">
+            <td class="admin-th" style="background-color:#FFD700;">Slot - 1</td>
+            <td class="admin-th">{{daily_data.slot_1_1}}</td>
+            <td class="admin-th">{{daily_data.slot_1_3}}</td>
+            <td class="admin-th"><a href="/update/1" type="submit" class="btn btn-success">Edit</button></td>
+            <td class="admin-th"><a href="/delete/1" type="submit" class="btn btn-danger">Delete</button></td> 
+          </tr>
+          {% endif %}
+        </tbody>
+    </table>
+    </div>
+</center>
+      <br><br>
+      <div class="admin-button-row">
+      <a class="btn btn-danger Logout" href="/admin_logout" id="refreshBtn"> Logout</a>
+      <a class="btn btn-danger Logout" href="/delete_old_results" id="refreshBtn">Delete Old Results</a>
+      </div>
+    
+
+
+
+<script>
+
+function fillInput(number) {
+  var row = document.getElementById("input1");
+  for (var i = 0; i < 9; i++) {
+    var inputId = "input" + (i + 1);
+    var inputValue = number ;
+    document.getElementById("input1").value = inputValue;
+
+
+  }
+}
+
+
+</script>
+
+<br><br><br><br><br><br><br> 
+    </div>
+
+</body>
+{% endblock body %}
+
+</html>
+
+
+
+    
