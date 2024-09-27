@@ -465,7 +465,9 @@ def text():
 @app.route("/contact")
 def contact():
     return render_template('contact.html', title="Contact Us")
-
+@app.route("/old")
+def old():
+    return render_template('old.html', title="Old Result")
 
 if __name__ == '__main__':
     app.run(debug=True)

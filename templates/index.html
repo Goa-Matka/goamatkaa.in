@@ -51,8 +51,8 @@
                         <div class="banner-image text-xl-start text-center">
                             <img class="hero-img" src="/static/banner.png" alt="/banner" >
 							<center>
-			
-							<div class="hero-result" >💥 
+				
+							<div class="hero-result" id="myDiv">💥 
 			
 				    {% if now >= start_time['slot1'] and now <= end_time['slot1'] %}
 						{% if daily_data.slot_1_1 %} {{daily_data.slot_1_3}}-{{daily_data.slot_1_1}} {% else %}Loading..{% endif %}
@@ -76,10 +76,79 @@
 						{% if daily_data.slot_10_1 %} {{daily_data.slot_10_3}}-{{daily_data.slot_10_1}} {% else %}Loading..{% endif %}
 					{% endif %}
 								
-								
-								
 								💥</div>
-                        </div>
+								<script>
+									function checkTimeAndShowDiv() {
+										const now = new Date();
+										const scheduledStartHour = 10; // 10 AM in 24-hour format
+										const scheduledEndHour = 19; // 7 PM in 24-hour format
+										const scheduledEndMinute = 30; // 7:30 PM
+								
+										// Check if the current time is within the scheduled hours
+										if (
+											(now.getHours() === scheduledStartHour && now.getMinutes() >= 0) || 
+											(now.getHours() > scheduledStartHour && now.getHours() < scheduledEndHour) || 
+											(now.getHours() === scheduledEndHour && now.getMinutes() < scheduledEndMinute)
+										) {
+											document.getElementById('myDiv').style.display = 'block';
+										} else {
+											document.getElementById('myDiv').style.display = 'none';
+										}
+									}
+								
+									// Check the time every minute
+									setInterval(checkTimeAndShowDiv, 60000);
+									// Initial check
+									checkTimeAndShowDiv();
+								</script>
+								
+                            </div>
+						
+					<center>
+
+					<div id="myD" class="hero-result">
+						
+							<b>{{extra.open_1}}</b>-<b>{{extra.open_3}}</b>
+
+					</div>
+				
+					<div id="myDv" class="hero-result">
+						
+						<b>{{extra.close_1}}</b>-<b>{{extra.close_3}}</b>
+
+				</div>
+			
+					
+
+						<script>
+							function checkTimeAndShowDiv() {
+								const now = new Date();
+								const scheduledStartHour = 21; // 9 PM in 24-hour format
+								const scheduledStartMinute = 40; // 9:45 PM
+								const scheduledEndHour = 22; // 10 PM in 24-hour format
+								const scheduledEndMinute = 30; // 10:30 PM
+						
+								// Check if the current time is within the scheduled hours
+								if (
+									(now.getHours() === scheduledStartHour && now.getMinutes() >= scheduledStartMinute) || 
+									(now.getHours() > scheduledStartHour && now.getHours() < scheduledEndHour) || 
+									(now.getHours() === scheduledEndHour && now.getMinutes() < scheduledEndMinute)
+								) {
+									document.getElementById('myD').style.display = 'block';
+								} else {
+									document.getElementById('myD').style.display = 'none';
+								}
+							}
+						
+							// Check the time every minute
+							setInterval(checkTimeAndShowDiv, 60000);
+							// Initial check
+							checkTimeAndShowDiv();
+						</script>
+						
+
+
+						
 					</center>
                     </div>
                     <div class="col-xxl-6 col-xl-7 col-lg-8 ms-xl-0 me-xl-0 ms-auto me-auto order-xl-1">
@@ -99,9 +168,13 @@
                            
                         </div>
                     </div>
-                    
-                </div>
+                    </div>
+					</div>
+					
+                
             </div>
+
+
         </section>
         <!-- HERO BANNER END -->
 
@@ -384,8 +457,7 @@
 		  <br /> <br> <br>
 		</div>
 	
-
-
+	
 
 
 		
@@ -444,12 +516,15 @@
 
 <center>
 			
-			
+	
 	<div>
-	  <table class="tg" cellpadding="2" >
+		
+	  <table class="tg" cellpadding="2" style="border-color: aliceblue;" >
 		<tbody>
+
+	<h3 class="center t-h2 date">htfht</h3>
 		  <tr class="slot">
-			<td>09:45 AM
+			<td>09:45 PM
 			</td>
 			<td>11:35 PM</td>
 			
@@ -459,29 +534,35 @@
 			{% if extra.open_1 %}
 			<td >
 				<b>{{extra.open_3}}</b>
-				<br>
+			<h3><b></b></h3>
 				
 				<b>{{extra.open_1}}</b>
 				{% else %}
-				<h3><b>***</b><b>*</b></h3>
+				<h3><b></b><b></b></h3>
 			{% endif %}
 				
 			</td>
 			{% if extra.open_1 %}
 			<td >
 				<b>{{extra.close_3}}</b>
-				<br>
+			<br>
 				
 				<b>{{extra.close_1}}</b>
+			
 				{% else %}
-				<h3><b>***</b><b>*</b></h3>
+				<b></b><b></b>
 			{% endif %}
 			</td>
 			
 		  </tr>
+		
 		</tbody>
+	
 	  </table>
+	 
+			
 	</div>
+
 </center>
 
 
