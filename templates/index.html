@@ -101,52 +101,72 @@
 									// Initial check
 									checkTimeAndShowDiv();
 								</script>
+
+
+
+<div class="hero-result" id="myD"></div>
+<div class="hero-result" id="myDv"></div>
+	<script>
+		function checkTimeAndShowDiv() {
+			const now = new Date();
+			const scheduledStartHour = 21; // 9 PM in 24-hour format
+			const scheduledStartMinute = 40; // 9:40 PM
+			const scheduledEndHour = 22; // 10 PM in 24-hour format
+			const scheduledEndMinute = 30; // 10:30 PM
+	
+			// Check if the current time is within the scheduled hours
+			if (
+				(now.getHours() === scheduledStartHour && now.getMinutes() >= scheduledStartMinute) || 
+				(now.getHours() > scheduledStartHour && now.getHours() < scheduledEndHour) || 
+				(now.getHours() === scheduledEndHour && now.getMinutes() < scheduledEndMinute)
+			) {
+				document.getElementById('myD').style.display = 'block';
+			} else {
+				document.getElementById('myD').style.display = 'none';
+			}
+		}
+	
+		// Check the time every minute
+		setInterval(checkTimeAndShowDiv, 60000);
+		// Initial check
+		checkTimeAndShowDiv();
+	</script>
+
+<script>
+	function checkTimeAndShowDiv() {
+		const now = new Date();
+		const scheduledStartHour = 23; // 9 PM in 24-hour format
+		const scheduledStartMinute = 30; // 9:40 PM
+		const scheduledEndHour = 23; // 10 PM in 24-hour format
+		const scheduledEndMinute = 55; // 10:30 PM
+
+		// Check if the current time is within the scheduled hours
+		if (
+			(now.getHours() === scheduledStartHour && now.getMinutes() >= scheduledStartMinute) || 
+			(now.getHours() > scheduledStartHour && now.getHours() < scheduledEndHour) || 
+			(now.getHours() === scheduledEndHour && now.getMinutes() < scheduledEndMinute)
+		) {
+			document.getElementById('myDv').style.display = 'block';
+		} else {
+			document.getElementById('myDv').style.display = 'none';
+		}
+	}
+
+	// Check the time every minute
+	setInterval(checkTimeAndShowDiv, 60000);
+	// Initial check
+	checkTimeAndShowDiv();
+</script>
+	
 								
                             </div>
 						
+						
 					<center>
 
-					<div id="myD" class="hero-result">
-						
-							<b>{{extra.open_1}}</b>-<b>{{extra.open_3}}</b>
-
-					</div>
-				
-					<div id="myDv" class="hero-result">
-						
-						<b>{{extra.close_1}}</b>-<b>{{extra.close_3}}</b>
-
-				</div>
-			
 					
 
-						<script>
-							function checkTimeAndShowDiv() {
-								const now = new Date();
-								const scheduledStartHour = 21; // 9 PM in 24-hour format
-								const scheduledStartMinute = 40; // 9:45 PM
-								const scheduledEndHour = 22; // 10 PM in 24-hour format
-								const scheduledEndMinute = 30; // 10:30 PM
-						
-								// Check if the current time is within the scheduled hours
-								if (
-									(now.getHours() === scheduledStartHour && now.getMinutes() >= scheduledStartMinute) || 
-									(now.getHours() > scheduledStartHour && now.getHours() < scheduledEndHour) || 
-									(now.getHours() === scheduledEndHour && now.getMinutes() < scheduledEndMinute)
-								) {
-									document.getElementById('myD').style.display = 'block';
-								} else {
-									document.getElementById('myD').style.display = 'none';
-								}
-							}
-						
-							// Check the time every minute
-							setInterval(checkTimeAndShowDiv, 60000);
-							// Initial check
-							checkTimeAndShowDiv();
-						</script>
-						
-
+		
 
 						
 					</center>
@@ -507,7 +527,7 @@
 
 	</div>
 	<div>
-		<h3><b>09:45 PM - 11:35 AM</b></h3>
+		<h3><b>09:45 PM - 11:35 PM</b></h3>
 	</div>
 	<br><br>
 
@@ -522,7 +542,7 @@
 	  <table class="tg" cellpadding="2" style="border-color: aliceblue;" >
 		<tbody>
 
-	<h3 class="center t-h2 date">htfht</h3>
+	<h3 class="center t-h2 date">Date Baby</h3>
 		  <tr class="slot">
 			<td>09:45 PM
 			</td>
