@@ -502,7 +502,6 @@
 
 
 <center>
-	
 		<h2 style="background-color: rgb(210, 123, 10); text-shadow: 2px 2px 2px black;" id="GoaNight">GOA NIGHT</h2>
 		<div style="display: inline-flex; margin-top: 25px;margin-bottom: 25px;">
 		{% if extra.open_1 %}
@@ -512,7 +511,6 @@
 		{% else %}
 			<h3><b>***</b><b>*</b></h3>
 		{% endif %}
-		<br>
 		{% if extra.close_1 %}
 			<span  style="color: rgb(7, 204, 7);font-size: 28px;">
 				<b>{{extra.close_1}}</b>-<b>{{extra.close_3}}</b>
@@ -520,11 +518,7 @@
 		
 		{% else %}
 			<h3><b>***</b><b>*</b></h3>
-			
-		
 		{% endif %}
-	
-
 	</div>
 	<div>
 		<h3><b>09:45 PM - 11:35 PM</b></h3>
@@ -536,52 +530,48 @@
 
 <center>
 			
-	
+	{% for extra in g_night_results %}
+	{% if extra %}
 	<div>
 		
-	  <table class="tg" cellpadding="2" style="border-color: aliceblue;" >
-		<tbody>
-
-	<h3 class="center t-h2 date">Date Baby</h3>
-		  <tr class="slot">
-			<td>09:45 PM
-			</td>
-			<td>11:35 PM</td>
+		<table class="tg" cellpadding="2" style="border-color: aliceblue;" >
+		  <tbody>
+  
+	  <h3 class="center t-h2 date">{{extra.date}}</h3>
+			<tr class="slot">
+			  <td>09:45 PM
+			  </td>
+			  <td>11:35 PM</td>
+			  
+			</tr>
 			
-		  </tr>
-		  
-		  <tr class="result">
-			{% if extra.open_1 %}
-			<td >
-				<b>{{extra.open_3}}</b>
-			<h3><b></b></h3>
-				
-				<b>{{extra.open_1}}</b>
-				{% else %}
-				<h3><b></b><b></b></h3>
-			{% endif %}
-				
-			</td>
-			{% if extra.open_1 %}
-			<td >
-				<b>{{extra.close_3}}</b>
-			<br>
-				
-				<b>{{extra.close_1}}</b>
-			
-				{% else %}
-				<b></b><b></b>
-			{% endif %}
-			</td>
-			
-		  </tr>
-		
-		</tbody>
-	
-	  </table>
-	 
-			
-	</div>
+			<tr class="result">
+			  {% if extra.open_1 %}
+			  <td >
+				  <b>{{extra.open_3}}</b>
+			  <h3><b></b></h3>
+				  
+				  <b>{{extra.open_1}}</b>
+				  {% else %}
+				  <h3><b></b><b></b></h3>
+			  {% endif %}
+				  
+			  </td>
+			  {% if extra.open_1 %}
+			  <td >
+				  <b>{{extra.close_3}}</b>
+			  <br>
+				  <b>{{extra.close_1}}</b>
+				  {% else %}
+				  <b></b><b></b>
+			  {% endif %}
+			  </td>
+			</tr>
+		  </tbody>
+		</table>	  
+	  </div>
+	{% endif %}
+	{% endfor %}
 
 </center>
 
@@ -592,17 +582,14 @@
 
 <h2 style="background-color: rgb(210, 123, 10); text-shadow: 2px 2px 2px black; text-align: center;" id="GoaMatka">GOA MATKA</h2>
 <br><br>
-    {% for result in results %}
+    {% for result in g_matka_results %}
+	{% if result %}
 	<div class="">
 		<h3 class="center t-h2 date">{{result.date}}</h3>
 		
 		<div class="table-container-1"> 
 		  <center>
-			
-
 			<center>
-			
-			
 				<div>
 				  <table class="tg" cellpadding="2" >
 					<tbody>
@@ -734,10 +721,9 @@
 				  </table>
 				</div>
 			</center>
-
-		
 		</div>
 	  </div>
+	{% endif %}
 	{% endfor %}
 
     <br /><br />

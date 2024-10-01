@@ -199,6 +199,63 @@ def home():
     daily_data = Result.query.filter_by(date=currentday).first()
     daily_extra = Extra.query.filter_by(date=currentday).first()
 
+    g_matka_result0 = Result.query.filter_by(date=currentday).first()
+
+    g_matka_1 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=1)
+    g_matka_1 = g_matka_1.strftime('%d-%b-%Y(%a)')
+    g_matka_result1 = Result.query.filter_by(date=g_matka_1).first()
+
+    g_matka_2 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=2)
+    g_matka_2 = g_matka_2.strftime('%d-%b-%Y(%a)')
+    g_matka_result2 = Result.query.filter_by(date=g_matka_2).first()
+
+    g_matka_3 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=3)
+    g_matka_3 = g_matka_3.strftime('%d-%b-%Y(%a)')
+    g_matka_result3 = Result.query.filter_by(date=g_matka_3).first()
+
+    g_matka_4 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=4)
+    g_matka_4 = g_matka_4.strftime('%d-%b-%Y(%a)')
+    g_matka_result4 = Result.query.filter_by(date=g_matka_4).first()
+
+    g_matka_5 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=5)
+    g_matka_5 = g_matka_5.strftime('%d-%b-%Y(%a)')
+    g_matka_result5 = Result.query.filter_by(date=g_matka_5).first()
+
+    g_matka_6 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=6)
+    g_matka_6 = g_matka_6.strftime('%d-%b-%Y(%a)')
+    g_matka_result6 = Result.query.filter_by(date=g_matka_6).first()
+
+    g_matka_results = [g_matka_result0, g_matka_result1, g_matka_result2, g_matka_result3, g_matka_result4, g_matka_result5, g_matka_result6]
+
+
+    g_night_result0 = Extra.query.filter_by(date=currentday).first()
+
+    g_night_1 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=1)
+    g_night_1 = g_night_1.strftime('%d-%b-%Y(%a)')
+    g_night_result1 = Extra.query.filter_by(date=g_night_1).first()
+
+    g_night_2 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=2)
+    g_night_2 = g_night_2.strftime('%d-%b-%Y(%a)')
+    g_night_result2 = Extra.query.filter_by(date=g_night_2).first()
+
+    g_night_3 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=3)
+    g_night_3 = g_night_3.strftime('%d-%b-%Y(%a)')
+    g_night_result3 = Extra.query.filter_by(date=g_night_3).first()
+
+    g_night_4 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=4)
+    g_night_4 = g_night_4.strftime('%d-%b-%Y(%a)')
+    g_night_result4 = Extra.query.filter_by(date=g_night_4).first()
+
+    g_night_5 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=5)
+    g_night_5 = g_night_5.strftime('%d-%b-%Y(%a)')
+    g_night_result5 = Extra.query.filter_by(date=g_night_5).first()
+
+    g_night_6 = datetime.now(timezone("Asia/Kolkata")) - relativedelta(days=6)
+    g_night_6 = g_night_6.strftime('%d-%b-%Y(%a)')
+    g_night_result6 = Extra.query.filter_by(date=g_night_6).first()
+
+    g_night_results = [g_night_result0, g_night_result1, g_night_result2, g_night_result3, g_night_result4, g_night_result5, g_night_result6]
+
     start_time = {
     'slot1' : now.replace(hour=10, minute=0, second=0, microsecond=0),
     'slot2' : now.replace(hour=11, minute=0, second=0, microsecond=0),
@@ -225,7 +282,7 @@ def home():
     'slot10' : now.replace(hour=19, minute=55, second=0, microsecond=0),
     }
 
-    return render_template('index.html', results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goasatta.in")
+    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goasatta.in")
 
 
 @app.route("/admin_auth", methods=['GET', 'POST'])
@@ -467,7 +524,9 @@ def contact():
     return render_template('contact.html', title="Contact Us")
 @app.route("/old")
 def old():
-    return render_template('old.html', title="Old Result")
+    matka_results = Result.query.order_by(Result.id.desc()).limit(31).all()
+    night_results = Extra.query.order_by(Extra.id.desc()).limit(31).all()
+    return render_template('old.html', matka_results=matka_results, night_results=night_results, title="Old Result")
 
 if __name__ == '__main__':
     app.run(debug=True)
