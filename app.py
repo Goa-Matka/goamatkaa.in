@@ -7,6 +7,12 @@ from pytz import timezone
 from dateutil.relativedelta import relativedelta
 
 
+
+
+
+# Create a timezone-aware UTC datetime
+
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -524,9 +530,10 @@ def contact():
     return render_template('contact.html', title="Contact Us")
 @app.route("/old")
 def old():
-    matka_results = Result.query.order_by(Result.id.desc()).limit(31).all()
-    night_results = Extra.query.order_by(Extra.id.desc()).limit(31).all()
-    return render_template('old.html', matka_results=matka_results, night_results=night_results, title="Old Result")
 
+
+      matka_results = Result.query.order_by(Result.id.desc()).limit(31).all()
+      night_results = Extra.query.order_by(Extra.id.desc()).limit(31).all()
+      return render_template('old.html', matka_results=matka_results, night_results=night_results, title="Old Result")
 if __name__ == '__main__':
     app.run(debug=True)
