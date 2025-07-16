@@ -536,4 +536,4 @@ def old():
       night_results = Extra.query.order_by(Extra.id.desc()).limit(31).all()
       return render_template('old.html', matka_results=matka_results, night_results=night_results, title="Old Result")
 if __name__ == '__main__':
-    app.run(debug=False; host='0.0.0.0')
+    app.run(debug=False,host='0.0.0.0')
