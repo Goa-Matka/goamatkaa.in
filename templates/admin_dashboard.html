@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GSC Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4285F4;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .alert-error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .alert-info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+        .last-updated {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Google Search Console Data (Last 7 Days)</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    {% if gsc_data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Clicks</th>
+                    <th>Impressions</th>
+                    <th>CTR</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in gsc_data %}
+                    <tr>
+                        <td>{{ row.date }}</td>
+                        <td>{{ "{:,}".format(row.clicks) }}</td>
+                        <td>{{ "{:,}".format(row.impressions) }}</td>
+                        <td>{{ row.ctr }}%</td>
+                        <td>{{ row.position }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available from Google Search Console.</p>
+    {% endif %}
+    
+    {% if now %}
+    <p class="last-updated">Last updated: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    {% endif %}
+    
+    <p><a href="/admin">← Back to Admin Panel</a></p>
+</body>
+</html>

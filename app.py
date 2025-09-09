@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash,send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session, flash,send_from_directory,flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
@@ -7,6 +7,7 @@ from pytz import timezone
 from dateutil.relativedelta import relativedelta
 
 
+from authorize_gsc import get_gsc_data
 
 
 
@@ -290,7 +291,7 @@ def home():
     'slot10' : now.replace(hour=19, minute=55, second=0, microsecond=0),
     }
 
-    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goasatta.in")
+    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goamatkaa.in")
 
 
 @app.route("/admin_auth", methods=['GET', 'POST'])
@@ -316,6 +317,35 @@ def admin():
         return render_template('admin.html', daily_data=daily_data, daily_extra=daily_extra, title="Admin Panel")
     return redirect(url_for('admin_auth'))
     
+@app.route("/admin/gsc")
+def show_gsc_data():
+    if 'admin' not in session:
+        return redirect(url_for('admin_auth'))
+
+    try:
+        data = get_gsc_data()
+        current_time = datetime.now(timezone("Asia/Kolkata"))
+
+        if data is None:
+            flash("Failed to fetch GSC data. Check server logs.", "error")
+            data = []
+        elif not data:
+            flash("No data available for the selected period.", "info")
+
+        return render_template("admin_dashboard.html", 
+                            gsc_data=data,
+                            now=current_time)
+
+    except Exception as e:
+        flash(f"System error: {str(e)}", "error")
+        return render_template("admin_dashboard.html", 
+                            gsc_data=[],
+                            now=datetime.now(timezone("Asia/Kolkata")))
+    
+
+@app.template_filter('format_number')
+def format_number(value):
+    return "{:,}".format(int(value)) if value else "0"
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -538,4 +568,4 @@ def old():
       night_results = Extra.query.order_by(Extra.id.desc()).limit(31).all()
       return render_template('old.html', matka_results=matka_results, night_results=night_results, title="Old Result")
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0')
