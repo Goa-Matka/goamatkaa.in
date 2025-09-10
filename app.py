@@ -291,7 +291,7 @@ def home():
     'slot10' : now.replace(hour=19, minute=55, second=0, microsecond=0),
     }
 
-    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goamatkaa.in")
+    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Matka Result only at goamatkaa.in")
 
 
 @app.route("/admin_auth", methods=['GET', 'POST'])
