@@ -39,7 +39,8 @@ db = SQLAlchemy(app)
 # 05:00 PM
 # 06:00 PM
 # 07:00 PM
-# db.create_all()
+
+
 
 
 class Result(db.Model):
@@ -78,20 +79,82 @@ class Extra(db.Model):
     date = db.Column(db.String(30), nullable=False)
 
 
+
+
+class MarqueeText(db.Model):
+    __tablename__ = "marquee_texts"
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(255), nullable=False)
+    is_active = db.Column(db.Boolean, default=True)  # active/inactive status
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+   
+with app.app_context():
+    db.create_all()
+
+
 # Get the admin password from the environment variable
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 
 
-# @app.route('/delete_old_results', methods=['POST'])
-# def delete_old_results():
-#     old_results = datetime.now(timezone("Asia/Kolkata")) - relativedelta(months=2)
-#     old_results = old_results.strftime('%d-%m-%Y')
-#     old_results = Result.query.filter(Result.date.like(f"%{old_results}%")).all()
-        
-#     if old_results:
-#         for data in old_results:
-#             db.session.delete(data)
-#         db.session.commit()
+
+
+
+@app.route("/add_marquee", methods=["GET", "POST"])
+def add_marquee():
+    if request.method == "POST":
+        text = request.form.get("marquee_text")
+        status = request.form.get("status") == "active"  # checkbox/radio
+
+        if text:
+            new_text = MarqueeText(text=text, is_active=status)
+            db.session.add(new_text)
+            db.session.commit()
+            flash("Marquee text added successfully!", "success")
+        return redirect(url_for("add_marquee"))
+
+    marquee_texts = MarqueeText.query.all()
+    return render_template("add_marquee.html", marquee_texts=marquee_texts)
+
+
+
+
+
+
+# Edit Marquee Text
+@app.route("/marquee/edit/<int:id>", methods=["GET", "POST"])
+def edit_marquee(id):
+    marquee = MarqueeText.query.get_or_404(id)
+
+    if request.method == "POST":
+        marquee.text = request.form.get("marquee_text")
+        marquee.is_active = True if request.form.get("status") == "active" else False
+        db.session.commit()
+        # flash("✅ Marquee text updated!", "success")
+        return redirect(url_for("admin"))
+
+    return render_template("edit_marquee.html", marquee=marquee)
+
+
+# Delete Marquee Text
+@app.route("/marquee/delete/<int:id>", methods=["POST"])
+def delete_marquee(id):
+    marquee = MarqueeText.query.get_or_404(id)
+    db.session.delete(marquee)
+    db.session.commit()
+    flash("❌ Marquee text deleted!", "info")
+    return redirect(url_for("admin"))
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/delete_old_results', methods=['GET', 'POST'])
 def delete_old_results():
@@ -264,7 +327,7 @@ def home():
     g_night_result6 = Extra.query.filter_by(date=g_night_6).first()
 
     g_night_results = [g_night_result0, g_night_result1, g_night_result2, g_night_result3, g_night_result4, g_night_result5, g_night_result6]
-
+    active_texts = MarqueeText.query.filter_by(is_active=True).all()
     start_time = {
     'slot1' : now.replace(hour=10, minute=0, second=0, microsecond=0),
     'slot2' : now.replace(hour=11, minute=0, second=0, microsecond=0),
@@ -291,7 +354,7 @@ def home():
     'slot10' : now.replace(hour=19, minute=55, second=0, microsecond=0),
     }
 
-    return render_template('index.html', g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goamatkaa.in")
+    return render_template('index.html', texts=active_texts, g_matka_results=g_matka_results, g_night_results=g_night_results, results=results, extra=daily_extra, now=now, start_time=start_time, end_time=end_time, daily_data=daily_data, title="Fastest and Live Online Goa Satta Result only at goamatkaa.in")
 
 
 @app.route("/admin_auth", methods=['GET', 'POST'])
@@ -307,15 +370,37 @@ def admin_auth():
     return render_template('login.html', title="Admin Login")
 
 
-@app.route("/admin")
+@app.route("/admin", methods=["GET", "POST"])
 def admin():
-    if 'admin' in session:
-        now = datetime.now(timezone("Asia/Kolkata"))
-        currentday = now.strftime('%d-%b-%Y(%a)')
-        daily_data = Result.query.filter_by(date=currentday).first()
-        daily_extra = Extra.query.filter_by(date=currentday).first()
-        return render_template('admin.html', daily_data=daily_data, daily_extra=daily_extra, title="Admin Panel")
-    return redirect(url_for('admin_auth'))
+    if 'admin' not in session:
+        return redirect(url_for('admin_auth'))
+
+    now = datetime.now(timezone("Asia/Kolkata"))
+    currentday = now.strftime('%d-%b-%Y(%a)')
+    daily_data = Result.query.filter_by(date=currentday).first()
+    daily_extra = Extra.query.filter_by(date=currentday).first()
+
+    # Handle form submission
+    if request.method == "POST":
+        text = request.form.get("marquee_text")
+        if text:
+            new_text = MarqueeText(text=text, is_active=True)
+            db.session.add(new_text)
+            db.session.commit()
+            flash("✅ Marquee text added successfully!", "success")
+        return redirect(url_for("admin"))  # refresh page after submit
+
+    # Load existing marquee texts
+    marquee_texts = MarqueeText.query.all()
+
+    return render_template(
+        'admin.html',
+        daily_data=daily_data,
+        daily_extra=daily_extra,
+        marquee_texts=marquee_texts,
+        title="Admin Panel"
+    )
+
     
 @app.route("/admin/gsc")
 def show_gsc_data():

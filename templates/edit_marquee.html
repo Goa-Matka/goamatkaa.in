@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Marquee</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-10 px-4">
+
+  <!-- Card -->
+  <div class="max-w-lg w-full bg-white shadow-2xl rounded-3xl p-8 relative">
+    
+    <!-- Fancy top accent -->
+    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-bold px-6 py-2 rounded-full shadow-lg">
+      Edit Marquee
+    </div>
+
+    <!-- Header -->
+    <h2 class="text-2xl font-extrabold text-gray-800 mt-4 mb-6 text-center">
+      ✏️ Update Your Marquee Text
+    </h2>
+
+    <!-- Edit form -->
+    <form method="POST" action="{{ url_for('edit_marquee', id=marquee.id) }}" class="space-y-6">
+      
+      <!-- Input field -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">
+          Marquee Text
+        </label>
+        <input
+          type="text"
+          name="marquee_text"
+          value="{{ marquee.text }}"
+          required
+          class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+        />
+      </div>
+
+      <!-- Toggle active/inactive -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">
+          Status
+        </label>
+        <select 
+       name="status" ... 
+          class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+          <option value="active" {% if marquee.is_active %}selected{% endif %}>✅ Active</option>
+          <option value="inactive" {% if not marquee.is_active %}selected{% endif %}>❌ Inactive</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex items-center justify-between">
+        <a href="{{ url_for('admin') }}"
+           class="px-5 py-2 rounded-xl bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition">
+          Cancel
+        </a>
+        <button 
+          type="submit"
+          class="px-6 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold hover:opacity-90 shadow-md transition">
+          Save Changes
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+</html>
