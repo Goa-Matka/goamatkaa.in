@@ -25,12 +25,25 @@
 		
         <!-- HERO BANNER START -->
 		<br>
-		<div class="marquee-container">
+		<!-- <div class="marquee-container">
 	<marquee behavior="" direction="right" class="marquee-content styled-marquee "><div> 💥<img src="../static/fire-flame_2.gif" style="width: 30px; height:30px;">  GoaMatka || casino affiliate <img src="../static/fire-flame_2.gif" style="width: 30px; height:30px;">💥 </div> </marquee>
-		  </div>
+		  </div> -->
 		  <br>
 
+<div class="overflow-hidden whitespace-nowrap bg-gray-900 text-white py-2 rounded-md shadow-md">
+	<marquee behavior="" direction="right" class="marquee-content styled-marquee ">
+<div class="animate-marquee inline-block">
+  {% if texts and texts|length > 0 %}
+    {% for t in texts %}
+      {{ t.text }}{% if not loop.last %} &nbsp;|&nbsp; {% endif %}
+    {% endfor %}
+  {% else %}
+    🚀 Welcome to our website! Stay tuned for updates.
+  {% endif %}
+</div>
 
+  </marquee>
+</div>
 
 
         <section class="hero-banner gradient-1">
@@ -202,115 +215,13 @@
 
 
         </section>
-        <!-- HERO BANNER END -->
 
 
-    <!--==== Banner Section Start ======= -->
-
-		<!-- <section class="banner-section bg6"> -->
-			<!-- <div class="banner-shape">
-				<img src="/static/feature2.png" alt="">
-			</div>
-			<div class="container">
-				<div class="row g-2 align-items-center">
-					<div class="col-xxl-6 col-lg-7">
-						<div class="banner-content wow fadeInLeft" data-wow-delay="0.3s">
-							<h1>
-								Play Online <span>Casino</span> & Win Money <span>Unlimited</span>
-							</h1>
-							<p class=" wow fadeInDown" data-wow-delay="0.5s">
-								A casino is a facility for certain types of gambling. Casinos are often built near or
-								combined with hotels, resorts, restaurants, retail shopping, cruise ships, and other tourist
-								attractions.
-							</p>
-					
-						</div>
-					</div>
-					<div class="col-xxl-6 col-lg-5">
-						<div class="banner-thumb wow fadeInRight" data-wow-delay="0.6s">
-							<img src="/static/banner.png" alt="banner-image">
-						</div>
-					</div>
-				</div>
-			</div> -->
-
-
-		<!-- </section> -->
-    <!--==== Banner Section End ======= -->
 
 	<section class="counter-section pt-120 pb-120">
 
         <div class="">
-            <!-- <div class="main-counter-wrapper">
-                <div class="counter-items odometer-item wow fadeInDown" data-wow-delay="0.1s">
-                    <div class="counter-content">
-                        <div class="cont d-flex align-items-center">
-                            <h2 class="odometer" data-odometer-final="1500">
-                                0
-                            </h2>
-                            <span>+</span>
-                        </div>
-                        <p>
-                            REGISTER MEMBERS
-                        </p>
-                    </div>
-                </div>
-                <div class="counter-items odometer-item wow fadeInDown" data-wow-delay="0.4s">
-                    <div class="counter-content">
-                        <div class="cont d-flex align-items-center">
-                            <h2 class="odometer" data-odometer-final="850">
-                                0
-                            </h2>
-                            <span>+</span>
-                        </div>
-                        <p>
-                            PLAYED POKER TODAY
-                        </p>
-                    </div>
-                </div>
-                <div class="counter-items odometer-item wow fadeInDown" data-wow-delay="0.6s">
-                    <div class="counter-content">
-                        <div class="cont d-flex align-items-center">
-                            <h2 class="odometer" data-odometer-final="630">
-                                0
-                            </h2>
-                            <span>+</span>
-                        </div>
-                        <p>
-                            TOTAL WINNERS
-                        </p>
-                    </div>
-                </div>
-                <div class="counter-items odometer-item wow fadeInDown" data-wow-delay="0.9s">
-                    <div class="counter-content">
-                        <div class="cont d-flex align-items-center">
-                            <h2 class="odometer" data-odometer-final="150">
-                                0
-                            </h2>
-                            <span>+</span>
-                        </div>
-                        <p>
-                            TODAY WINNERS
-                        </p>
-                    </div>
-                </div>
-            </div> -->
 
-			<!-- <div class="row g-2 align-items-center">
-				<div class="col-xxl-6 col-lg-7 index-extra">
-					
-						<h1 class="h1-extra">
-							Play Online <span>Casino</span> & Win Money <span>Unlimited</span>
-						</h1>
-						<br><br>
-						<p class="wow fadeInDown p-extra" data-wow-delay="0.5s">
-							A casino is a facility for certain types of gambling. Casinos are often built near or
-							combined with hotels, resorts, restaurants, retail shopping, cruise ships, and other tourist
-							attractions.
-						</p>
-				
-					
-				</div> -->
 
 		<div class="video-container">
 						<video class="video" autoplay loop muted playsinline>
