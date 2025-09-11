@@ -78,6 +78,13 @@ class Extra(db.Model):
     date = db.Column(db.String(30), nullable=False)
 
 
+
+
+
+
+
+
+
 # Get the admin password from the environment variable
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 
